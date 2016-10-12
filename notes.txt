@@ -1,0 +1,28 @@
+General template for linear recursion over collections
+
+(defn eats-coll [coll]
+  (if (empty? coll)
+    ...
+    (... (first coll) ... (eats-call (rest coll)))))
+
+
+Recursion over natural numbers
+
+(defn eats-number [n]
+  (if (zero? n)
+    ...
+    (... n ... (eats-numbers (dec n)))))
+
+Tree Recursion
+
+used for hierarchical data structures
+
+ex:
+
+(defn f [n]
+  (if (< n 3)
+    n
+    (+ (f (- n 1))
+      (* 2 (f (- n 2)))
+      (* 3 (f (- n 3))))))
+

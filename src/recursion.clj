@@ -81,13 +81,23 @@
       (vector (f alpha1 alpha2))
     :else (cons (f alpha1 alpha2)
                 (my-map f remaining1 remaining2)))))
-      
 
+;; to handle negative powers -> 1 / (power n (* -1 k))
 (defn power [n k]
-  :-)
+  (if (zero? k)
+    1
+    (* n (power n (dec k)))))
 
+;; compute the nth fibonacci number
+;; Fn defined as:
+;; F0 = 0
+;; F1 = 1
+;; Fn = Fn-1 + Fn-2
 (defn fib [n]
-  :-)
+  (cond
+    (= n 0) 0
+    (= n 1) 1
+    :else (+ (fib (- n 1)) (fib (- n 2)))))
 
 (defn my-repeat [how-many-times what-to-repeat]
   [:-])
