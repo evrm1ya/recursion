@@ -100,16 +100,29 @@
     :else (+ (fib (- n 1)) (fib (- n 2)))))
 
 (defn my-repeat [how-many-times what-to-repeat]
-  [:-])
+  (if (<= how-many-times 0)
+    '()
+    (cons what-to-repeat (my-repeat (dec how-many-times) what-to-repeat))))
 
 (defn my-range [up-to]
-  [:-])
+  (if (<= up-to 0)
+    '()
+    (cons (dec up-to) (my-range (dec up-to)))))
 
+;; original
+;;(defn tails [a-seq]
+;;  (if (empty? a-seq)
+;;    [[]]
+;;    (map vec (cons a-seq (tails (rest a-seq))))))
+
+;; checked
 (defn tails [a-seq]
-  [:-])
+  (if (empty? a-seq)
+    '(())
+    (cons a-seq (tails (rest a-seq)))))
 
 (defn inits [a-seq]
-  [:-])
+  (map reverse (tails (reverse a-seq))))
 
 (defn rotations [a-seq]
   [:-])
